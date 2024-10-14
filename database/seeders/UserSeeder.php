@@ -5,6 +5,7 @@ namespace Database\Seeders;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Role;
+use Spatie\Permission\Models\Permission;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class UserSeeder extends Seeder
@@ -16,18 +17,30 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        // Buat user baru
-        $user = User::create([
+        // Buat role admin jika belum ada
+        $roleAdmin = Role::firstOrCreate(['name' => 'admin']);
+        $roleMember = Role::firstOrCreate(['name' => 'member']); // contoh untuk role member
+
+        // Buat user admin baru
+        $userAdmin = User::create([
             'name' => 'Pribadi Ramadhan',
             'username' => 'prabusemar',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('satusampai8')
         ]);
 
-        // Cari role berdasarkan nama
-        $role = Role::where('name', 'admin')->first();
+        // Tugaskan role admin ke user
+        $userAdmin->assignRole($roleAdmin);
 
-        // Tugaskan role ke user
-        $user->assignRole($role);
+        // Buat user member baru (opsional)
+        $userMember = User::create([
+            'name' => 'Ryan Yanuar Pradana',
+            'username' => 'rynynr',
+            'email' => 'ryan@gmail.com',
+            'password' => bcrypt('siperingkat3')
+        ]);
+
+        // Tugaskan role member ke user
+        $userMember->assignRole($roleMember);
     }
 }
