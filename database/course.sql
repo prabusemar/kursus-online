@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 14, 2024 at 07:11 AM
+-- Generation Time: Oct 14, 2024 at 09:47 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -151,7 +151,9 @@ CREATE TABLE `model_has_roles` (
 
 INSERT INTO `model_has_roles` (`role_id`, `model_type`, `model_id`) VALUES
 (1, 'App\\Models\\User', 1),
-(2, 'App\\Models\\User', 2);
+(1, 'App\\Models\\User', 4),
+(2, 'App\\Models\\User', 2),
+(2, 'App\\Models\\User', 5);
 
 -- --------------------------------------------------------
 
@@ -352,8 +354,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `username`, `email`, `email_verified_at`, `password`, `two_factor_secret`, `two_factor_recovery_codes`, `two_factor_confirmed_at`, `avatar`, `github`, `instagram`, `about`, `remember_token`, `created_at`, `updated_at`) VALUES
-(1, 'Pribadi Ramadhan', 'prabusemar', 'admin@gmail.com', NULL, '$2y$10$dnDPEFOqZSI4.Ex7nAmxaOo/c9EVS7bXKSGkMYP4KQ4Sc890DxpIW', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-14 04:26:32', '2024-10-14 04:26:32'),
-(2, 'Muhammad Zahwan Sidqi', 'Muhammad Zahwan Sidqi-mBMPlq', 'zahwan@gmail.com', NULL, '$2y$10$2l1CsAZULlumfDDNaqYeFuUeKCPQdVmPHeJdLkGj749LZK64MfFX2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-14 05:09:39', '2024-10-14 05:09:39');
+(2, 'Muhammad Zahwan Sidqi', 'Zahwan', 'zahwan@gmail.com', NULL, '$2y$10$2l1CsAZULlumfDDNaqYeFuUeKCPQdVmPHeJdLkGj749LZK64MfFX2', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-14 05:09:39', '2024-10-14 05:09:39'),
+(4, 'Pribadi Ramadhan', 'prabusemar', 'admin@gmail.com', NULL, '$2y$10$SQ7whIDyv3cs0PKUnHRUXu1zS5KEwofu26nJohg/0wWQ5VYgup5IS', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-14 06:48:15', '2024-10-14 06:48:15'),
+(5, 'Ryan Yanuar Pradana', 'rynynr', 'ryan@gmail.com', NULL, '$2y$10$Ifso.xxDmlm98PYOpvSiXO2N7UefFUFtOph/Fd/D5IFD39mRnvkEy', NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL, '2024-10-14 06:48:15', '2024-10-14 06:48:15');
 
 -- --------------------------------------------------------
 
@@ -593,7 +596,7 @@ ALTER TABLE `transaction_details`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `videos`
