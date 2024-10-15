@@ -1,6 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import "~@fortawesome/fontawesome-free/css/all.css";
 
 .shadow-custom {
     box-shadow: 10px 10px 0 rgba(255, 255, 255, 0.1);
