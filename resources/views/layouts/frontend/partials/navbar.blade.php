@@ -24,6 +24,21 @@
                     </a>
                 </li>
                 <li class="hidden lg:flex">
+                    <a href="{{ route('about') }}"
+                        class="text-sm font-semibold text-white flex items-center gap-2 {{ activeNav('about') }}">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle w-5 h-5"
+                            width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
+                            fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <circle cx="12" cy="12" r="9"></circle>
+                            <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                            <polyline points="11 12 12 12 12 16 13 16"></polyline>
+                        </svg>
+                        About Us
+                    </a>
+                </li>
+
+                <li class="hidden lg:flex">
                     <a href="{{ route('course.index') }}"
                         class="text-sm font-semibold text-white flex items-center gap-2 {{ activeNav('course.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg"
@@ -112,6 +127,23 @@
                         Showcase
                     </a>
                 </li>
+                <li class="hidden lg:flex">
+                    <a href="https://rplsmart-blog.vercel.app/"
+                        class="text-sm font-semibold text-white flex items-center gap-2"
+                        target="_blank">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-notebook w-5 h-5" width="24" height="24"
+                            viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M3 19v-14a2 2 0 0 1 2 -2h11a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-11a2 2 0 0 1 -2 -2z"></path>
+                            <path d="M9 5v16"></path>
+                            <path d="M12 7h2"></path>
+                            <path d="M12 11h2"></path>
+                        </svg>
+                        Blog
+                    </a>
+                </li>
+
             </ul>
             <!-- NavProfile -->
             <div class="hidden md:flex items-center gap-2 text-white">
@@ -353,6 +385,21 @@
                             </a>
                         </li>
                         <li>
+                            <a href="{{ route('about') }}"
+                                class="p-3 rounded-lg text-sm font-semibold text-white flex items-center gap-2 hover:text-blue-500 {{ activeNav('about') }}">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-info-circle w-5 h-5" width="24" height="24"
+                                    viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <circle cx="12" cy="12" r="9"></circle>
+                                    <line x1="12" y1="8" x2="12.01" y2="8"></line>
+                                    <polyline points="11 12 12 12 12 16 13 16"></polyline>
+                                </svg>
+                                About Us
+                            </a>
+                        </li>
+
+                        <li>
                             <a href="{{ route('course.index') }}"
                                 class="p-3 rounded-lg text-sm font-semibold text-white flex items-center gap-2 hover:text-blue-500 {{ activeNav('course*') }}">
                                 <svg xmlns="http://www.w3.org/2000/svg"
@@ -441,6 +488,22 @@
                                     <path d="M10 9l2 -2l-2 -2"></path>
                                 </svg>
                                 Showcase
+                            </a>
+                        </li>
+                        <li class="lg:hidden">
+                            <a href="https://rplsmart-blog.vercel.app/"
+                                class="block px-4 py-2 rounded-lg text-sm font-semibold text-white hover:text-blue-500"
+                                target="_blank">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-notebook w-5 h-5 inline-block mr-2" width="24"
+                                    height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none"
+                                    stroke-linecap="round" stroke-linejoin="round">
+                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                    <path d="M3 19v-14a2 2 0 0 1 2 -2h11a2 2 0 0 1 2 2v14a2 2 0 0 1 -2 2h-11a2 2 0 0 1 -2 -2z"></path>
+                                    <path d="M9 5v16"></path>
+                                    <path d="M12 7h2"></path>
+                                    <path d="M12 11h2"></path>
+                                </svg>
+                                Blog
                             </a>
                         </li>
                         @guest

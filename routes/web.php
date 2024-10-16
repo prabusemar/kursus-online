@@ -40,8 +40,11 @@ use App\Http\Controllers\Member\TransactionController as MemberTransactionContro
 
 // home route
 Route::get('/', HomeController::class)->name('home');
+//about route
+Route::view('/about', 'landing.about')->name('about');
+
 // course route
-Route::controller(LandingCourseController::class)->as('course.')->group(function(){
+Route::controller(LandingCourseController::class)->as('course.')->group(function () {
     Route::get('/course', 'index')->name('index');
     Route::get('/course/{course:slug}', 'show')->name('show');
     Route::get('/course/{course:slug}/{video:episode}', 'video')->name('video');
@@ -53,7 +56,7 @@ Route::get('/review', LandingReviewController::class)->name('review');
 // showcase route
 Route::get('/showcase', LandingShowcaseController::class)->name('showcase');
 // cart route
-Route::controller(CartController::class)->middleware('auth')->as('cart.')->group(function(){
+Route::controller(CartController::class)->middleware('auth')->as('cart.')->group(function () {
     Route::get('/cart', 'index')->name('index');
     Route::post('/cart/{course}', 'store')->name('store');
     Route::delete('/cart/{cart}', 'delete')->name('destroy');
@@ -62,11 +65,11 @@ Route::controller(CartController::class)->middleware('auth')->as('cart.')->group
 Route::get('/checkout', [CheckoutContoller::class, 'store'])->name('checkout.store');
 
 // admin route
-Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
+Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
     // admin dashboard route
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     // admin marknotification route
-    Route::controller(NotificationDatabaseController::class)->group(function(){
+    Route::controller(NotificationDatabaseController::class)->group(function () {
         Route::post('/mark-as-read/{id}', 'readNotification')->name('markNotification');
         Route::post('/mark-all-read', 'readAllNotification')->name('markAllRead');
     });
@@ -78,19 +81,19 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'r
     // admin showcase route
     Route::get('/showcase', ShowcaseController::class)->name('showcase.index');
     // admin review route
-    Route::controller(ReviewController::class)->group(function(){
+    Route::controller(ReviewController::class)->group(function () {
         Route::get('/review', 'index')->name('review.index');
         Route::post('/review/{course}', 'store')->name('review');
     });
     //admin user route
-    Route::controller(UserController::class)->as('user.')->group(function(){
+    Route::controller(UserController::class)->as('user.')->group(function () {
         Route::get('/user/profile', 'profile')->name('profile');
         Route::put('/user/profile/{user}', 'profileUpdate')->name('profile.update');
         Route::get('/user/profile/password/{user}', 'profile')->name('profile.password');
     });
     Route::resource('/user', UserController::class)->only('index', 'update', 'destroy');
     // admin video route
-    Route::controller(VideoController::class)->as('video.')->group(function(){
+    Route::controller(VideoController::class)->as('video.')->group(function () {
         Route::get('/{course:slug}/video', 'index')->name('index');
         Route::get('/{course:slug}/create', 'create')->name('create');
         Route::post('/{course:slug}/store', 'store')->name('store');
@@ -103,7 +106,7 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'r
 });
 
 // member route
-Route::group(['as' => 'member.', 'prefix' => 'account', 'middleware' => ['auth', 'role:member|author']], function(){
+Route::group(['as' => 'member.', 'prefix' => 'account', 'middleware' => ['auth', 'role:member|author']], function () {
     // member dashboard route
     Route::get('/dashboard', MemberDashboardController::class)->name('dashboard');
     // member course route
@@ -112,7 +115,7 @@ Route::group(['as' => 'member.', 'prefix' => 'account', 'middleware' => ['auth',
     // member showcase route
     Route::resource('/showcase', MemberShowcaseController::class);
     // member video route
-    Route::controller(MemberVideoController::class)->as('video.')->middleware('role:author')->group(function(){
+    Route::controller(MemberVideoController::class)->as('video.')->middleware('role:author')->group(function () {
         Route::get('/{course:slug}/video', 'index')->name('index');
         Route::get('/{course:slug}/create', 'create')->name('create');
         Route::post('/{course:slug}/store', 'store')->name('store');
@@ -125,7 +128,7 @@ Route::group(['as' => 'member.', 'prefix' => 'account', 'middleware' => ['auth',
     // member transaction route
     Route::resource('/transaction', MemberTransactionController::class)->only('index', 'show');
     // member profile route
-    Route::controller(MemberProfileController::class)->as('profile.')->group(function(){
+    Route::controller(MemberProfileController::class)->as('profile.')->group(function () {
         Route::get('/profile', 'index')->name('index');
         Route::put('/profile/{user}', 'updateProfile')->name('update');
         Route::put('/profile/password/{user}', 'updatePassword')->name('password');

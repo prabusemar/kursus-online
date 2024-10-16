@@ -2,6 +2,8 @@
 
 @section('content')
     @include('layouts.frontend.partials.hero')
+    @include('layouts.frontend.partials.why-smartlearn')
+    @include('layouts.frontend.partials.testimoni')
     <section
         class="p-8 text-center bg-[#252422] font-semibold text-[#FFFCF2] text-lg md:text-2xl border-t border-b border-dashed border-[#BD562D]">
         <span class="text-[#EB5E28]">{{ $user->count() }}</span> ORANG TELAH BELAJAR DI SMARTLEARN
@@ -35,6 +37,8 @@
             </a>
         </div>
     </section>
+    @include('layouts.frontend.partials.faq')
+
     <section class="w-full p-6 bg-[#252422] border-t border-b border-dashed border-[#403d39]">
         <div class="flex flex-col items-center justify-center p-4 space-y-8 md:p-10 md:px-24 xl:px-48">
             <h1 class="text-2xl md:text-3xl font-bold leading-none text-center text-[#FFFCF2]">
