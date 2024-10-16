@@ -13,6 +13,66 @@
     <link rel="stylesheet" href="{{ asset('plugins/fontawesome-free/css/all.min.css') }}">
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('dist/css/adminlte.min.css') }}">
+    <style>
+        /* Custom Theme Colors */
+        body {
+            background-color: #252422;
+            color: #fffcf2;
+        }
+
+        .login-box {
+            background-color: #f4f4f4;
+            border-radius: 8px;
+            padding: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .card-outline.card-primary {
+            border-top: 3px solid #BD562D;
+        }
+
+        .card-header {
+            background-color: #BD562D;
+            color: #fffcf2;
+        }
+
+        .card-header a {
+            color: #fffcf2;
+        }
+
+        .card-body {
+            background-color: #f4f4f4;
+            color: #252422;
+        }
+
+        .btn-primary {
+            background-color: #BD562D;
+            border-color: #BD562D;
+        }
+
+        .btn-primary:hover {
+            background-color: #eb5e28;
+            border-color: #eb5e28;
+        }
+
+        .form-control {
+            background-color: #fffcf2;
+            border-color: #ccc5b9;
+            color: #252422;
+        }
+
+        .form-control:focus {
+            background-color: #fffcf2;
+            border-color: #eb5e28;
+            color: #252422;
+        }
+
+        .input-group-text {
+            background-color: #fffcf2;
+            border-color: #ccc5b9;
+            color: #252422;
+        }
+    </style>
 </head>
 
 <body class="hold-transition login-page">
@@ -20,14 +80,8 @@
         <div class="card card-outline card-primary">
             <div class="card-header text-center">
                 <a href="{{ route('home') }}" class="h1">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brand-tabler"
-                        width="48" height="48" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
-                        fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M8 9l3 3l-3 3"></path>
-                        <line x1="13" y1="15" x2="16" y2="15"></line>
-                        <rect x="4" y="4" width="16" height="16" rx="4"></rect>
-                    </svg>LaraDev
+                    <img src="{{ asset('PPLG.png') }}" alt="" width="70px">
+                    SmartLearn
                 </a>
             </div>
             @yield('content')

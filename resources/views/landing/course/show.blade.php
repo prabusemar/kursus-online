@@ -1,12 +1,12 @@
 @extends('layouts.frontend.app', ['title' => 'Course Detail'])
 
 @section('content')
-    <div class="w-full bg-slate-700 p-5 md:p-20">
+    <div class="w-full bg-[#403d39] p-5 md:p-20">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4 md:gap-20">
                 <div class="md:col-span-2">
                     <div class="flex flex-row gap-4 text-xs justify-center md:justify-start mt-4">
-                        <div class="text-slate-400 flex items-center gap-2">
+                        <div class="text-[#ccc5b9] flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list w-5 h-5"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -20,7 +20,7 @@
                             </svg>
                             {{ $course->videos()->count() }} Episode
                         </div>
-                        <div class="text-slate-400 flex items-center gap-2 ">
+                        <div class="text-[#ccc5b9] flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users w-5 h-5"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -32,7 +32,7 @@
                             </svg>
                             {{ $enrolled }} Member
                         </div>
-                        <div class="text-slate-400 flex items-center gap-2">
+                        <div class="text-[#ccc5b9] flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-message-2 w-5 h-5"
                                 width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
                                 fill="none" stroke-linecap="round" stroke-linejoin="round">
@@ -48,16 +48,16 @@
                     <h1 class="text-lg font-semibold lg:text-2xl py-4 text-white text-center md:text-start">
                         {{ $course->name }}
                     </h1>
-                    <p class="text-sm text-center md:text-base md:text-justify text-gray-400">{{ $course->description }}
+                    <p class="text-sm text-center md:text-base md:text-justify text-[#ccc5b9]">{{ $course->description }}
                     </p>
                     <div class="mt-5">
                         <h1 class="text-3xl md:text-6xl text-green-500 font-mono text-center md:text-start">
                             <sup>Rp</sup>{{ moneyFormat(discount($course->price, $course->discount)) }}
                         </h1>
-                        <div class="flex flex-row gap-4 items-center my-6 justify-center md:justify-start">
+                        <div class="flex flex-row gap-4 items-center my-6 justify-center md:justify-start space-x-4">
                             @if ($alreadyBought)
                                 <div
-                                    class="px-4 py-2 rounded-lg bg-sky-800 text-white flex items-center gap-2 text-sm border border-sky-600 cursor-not-allowed">
+                                    class="px-4 py-2 rounded-lg bg-[#BD562D] text-white flex items-center gap-2 text-sm border border-[#BD562D] cursor-not-allowed">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         class="icon icon-tabler icon-tabler-discount-check w-5 h-5" width="24"
                                         height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
@@ -74,7 +74,7 @@
                                 <form action="{{ route('cart.store', $course->id) }}" method="POST">
                                     @csrf
                                     <button type="submit"
-                                        class="px-4 py-2 rounded-lg bg-green-800 text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border border-green-600">
+                                        class="mt-4 px-4 py-2 rounded-lg bg-[#166534] text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border border-[#166534]">
                                         <svg xmlns="http://www.w3.org/2000/svg"
                                             class="icon icon-tabler icon-tabler-basket w-5 h-5" width="24"
                                             height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
@@ -88,19 +88,33 @@
                                     </button>
                                 </form>
                             @endif
-                            <a href="{{ $course->demo }}" target="_blank"
-                                class="px-4 py-2 rounded-lg bg-red-800 text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border border-red-600">
+
+                            <!-- Button to trigger modal -->
+                            <button onclick="openModal()"
+                                class="px-4 py-2 rounded-lg bg-[#991B1B] text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border border-[#991B1B]">
                                 <svg xmlns="http://www.w3.org/2000/svg"
                                     class="icon icon-tabler icon-tabler-brand-youtube h-5 w-5" width="24"
                                     height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
                                     fill="none" stroke-linecap="round" stroke-linejoin="round">
                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <rect x="3" y="5" width="18" height="14" rx="4">
-                                    </rect>
+                                    <rect x="3" y="5" width="18" height="14" rx="4"></rect>
                                     <path d="M10 9l5 3l-5 3z"></path>
                                 </svg>
                                 Lihat Demo
-                            </a>
+                            </button>
+
+                            <!-- Modal -->
+                            <div class="hidden fixed inset-0 bg-transparent flex items-center justify-center z-50" id="demoModal">
+                                <div class="bg-[#ccc5b9] p-4 rounded-lg max-w-4xl w-full mx-auto">
+                                    <div class="flex justify-between items-center mb-4">
+                                        <h2 class="text-xl font-bold">Demo Video</h2>
+                                        <button onclick="closeModal()" class="text-black text-2xl">&times;</button>
+                                    </div>
+                                    <div class="relative w-full h-0 pb-[56.25%]"> <!-- 16:9 Aspect Ratio -->
+                                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/{{ $course->demo }}" frameborder="0" allowfullscreen></iframe>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -138,7 +152,7 @@
                                             <polyline points="7 7 12 12 7 17"></polyline>
                                             <polyline points="13 7 18 12 13 17"></polyline>
                                         </svg>
-                                        <p class="text-xs md:text-sm ml-2 hover:text-red-500">{{ $video->episode }}.
+                                        <p class="text-xs md:text-sm ml-2 hover:text-[#eb5e28]">{{ $video->episode }}.
                                             {{ $video->name }}</p>
                                     </a>
                                     <div class="text-xs md:text-sm">
@@ -207,3 +221,20 @@
         </div>
     </div>
 @endsection
+
+<script>
+    function openModal() {
+        document.getElementById('demoModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('demoModal');
+        modal.classList.add('hidden');
+
+        // Menghentikan video dengan mengatur ulang src
+        const iframe = modal.querySelector('iframe');
+        const currentSrc = iframe.src;
+        iframe.src = ''; // Mengosongkan src terlebih dahulu
+        iframe.src = currentSrc; // Mengembalikan src untuk menghentikan video
+    }
+</script>
