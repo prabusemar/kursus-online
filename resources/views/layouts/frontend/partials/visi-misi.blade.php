@@ -1,4 +1,4 @@
-<section class="bg-[#CCC5B9] p-10 w-full">
+<section class="bg-[#CCC5B9] p-14 w-full">
     <div class="container mx-auto text-center">
         <h2 class="text-3xl font-bold text-[#252422] mb-8">Visi dan Misi</h2>
         <div class="flex flex-col md:flex-row gap-8">

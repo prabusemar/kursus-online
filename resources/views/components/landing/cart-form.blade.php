@@ -41,9 +41,15 @@
             </div>
         </div>
     </div>
-    <div class="my-3">
-        <button class="text-white bg-slate-800 hover:bg-slate-900 rounded-lg w-full p-2">
+    <div class="mt-6">
+        <button
+            @if ($total == 0) disabled
+                class="px-4 py-2 rounded-lg bg-gray-400 text-white cursor-not-allowed"
+            @else
+                class="px-4 py-2 rounded-lg bg-[#BD562D] text-white hover:bg-[#EB5E28] transition duration-300" @endif
+            type="submit">
             Lanjutkan Ke Pembayaran
         </button>
     </div>
+
 </form>

@@ -1,5 +1,5 @@
 <!-- Section Testimoni -->
-<section class="bg-[#FFFCF2] p-10 border-t-4 border-dashed border-[#BD562D]">
+<section class="bg-[#FFFCF2] p-10 border-t-4 border-dashed border-[#BD562D] overflow-hidden">
     <div class="container mx-auto text-center">
         <h2 class="text-2xl font-bold text-[#252422] mb-5">Apa Kata Mereka?</h2>
         <p class="text-[#252422] text-base md:text-lg mb-8">
@@ -81,6 +81,7 @@
 <style>
     .swiper-container {
         position: relative;
+        overflow: hidden; /* Prevent horizontal scrolling */
     }
     .swiper-button-next,
     .swiper-button-prev {
