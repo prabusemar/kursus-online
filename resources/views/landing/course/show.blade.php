@@ -1,7 +1,7 @@
 @extends('layouts.frontend.app', ['title' => 'Course Detail'])
 
 @section('content')
-    <div class="w-full bg-[#403d39] p-5 md:p-20">
+    <div class="w-full bg-[#252422] p-5 md:p-20">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4 md:gap-20">
                 <div class="md:col-span-2">
@@ -104,14 +104,17 @@
                             </button>
 
                             <!-- Modal -->
-                            <div class="hidden fixed inset-0 bg-transparent flex items-center justify-center z-50" id="demoModal">
+                            <div class="hidden fixed inset-0 bg-transparent flex items-center justify-center z-50"
+                                id="demoModal">
                                 <div class="bg-[#ccc5b9] p-4 rounded-lg max-w-4xl w-full mx-auto">
                                     <div class="flex justify-between items-center mb-4">
                                         <h2 class="text-xl font-bold">Demo Video</h2>
                                         <button onclick="closeModal()" class="text-black text-2xl">&times;</button>
                                     </div>
                                     <div class="relative w-full h-0 pb-[56.25%]"> <!-- 16:9 Aspect Ratio -->
-                                        <iframe class="absolute inset-0 w-full h-full" src="https://www.youtube.com/embed/{{ $course->demo }}" frameborder="0" allowfullscreen></iframe>
+                                        <iframe class="absolute inset-0 w-full h-full"
+                                            src="https://www.youtube.com/embed/{{ $course->demo }}" frameborder="0"
+                                            allowfullscreen></iframe>
                                     </div>
                                 </div>
                             </div>
@@ -177,8 +180,8 @@
                                                     stroke="currentColor" fill="none" stroke-linecap="round"
                                                     stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <rect x="5" y="11" width="14" height="10"
-                                                        rx="2"></rect>
+                                                    <rect x="5" y="11" width="14" height="10" rx="2">
+                                                    </rect>
                                                     <circle cx="12" cy="16" r="1"></circle>
                                                     <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
                                                 </svg>
@@ -204,8 +207,8 @@
                                                     stroke-width="1.25" stroke="currentColor" fill="none"
                                                     stroke-linecap="round" stroke-linejoin="round">
                                                     <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                    <rect x="5" y="11" width="14" height="10"
-                                                        rx="2"></rect>
+                                                    <rect x="5" y="11" width="14" height="10" rx="2">
+                                                    </rect>
                                                     <circle cx="12" cy="16" r="1"></circle>
                                                     <path d="M8 11v-4a4 4 0 0 1 8 0v4"></path>
                                                 </svg>

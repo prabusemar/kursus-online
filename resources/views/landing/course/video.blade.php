@@ -1,7 +1,7 @@
 @extends('layouts.frontend.app', ['title' => 'Homepage'])
 
 @section('content')
-    <div class="w-full bg-[#403d39] p-5 md:p-20">
+    <div class="w-full bg-[#252422] p-5 md:p-20">
         <div class="container mx-auto">
             <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-4">
                 <div class="col-span-12 md:col-span-7">
@@ -77,8 +77,8 @@
                                                         stroke-width="1.25" stroke="currentColor" fill="none"
                                                         stroke-linecap="round" stroke-linejoin="round">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <rect x="5" y="11" width="14" height="10"
-                                                            rx="2"></rect>
+                                                        <rect x="5" y="11" width="14" height="10" rx="2">
+                                                        </rect>
                                                         <circle cx="12" cy="16" r="1"></circle>
                                                         <path d="M8 11v-5a4 4 0 0 1 8 0"></path>
                                                     </svg>
@@ -104,8 +104,8 @@
                                                         stroke-width="1.25" stroke="currentColor" fill="none"
                                                         stroke-linecap="round" stroke-linejoin="round">
                                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                                        <rect x="5" y="11" width="14"
-                                                            height="10" rx="2"></rect>
+                                                        <rect x="5" y="11" width="14" height="10" rx="2">
+                                                        </rect>
                                                         <circle cx="12" cy="16" r="1"></circle>
                                                         <path d="M8 11v-4a4 4 0 0 1 8 0v4"></path>
                                                     </svg>

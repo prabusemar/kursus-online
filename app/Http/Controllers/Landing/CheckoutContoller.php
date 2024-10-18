@@ -28,7 +28,7 @@ class CheckoutContoller extends Controller
     public function store(Request $request)
     {
         // gunakan db transaction jika terdapat 2 atau lebih transaksi database yang terjadi.
-        $snapToken = DB::transaction(function () use($request){
+        $result = DB::transaction(function () use($request){
             // masukan nilai 6 kedalam variabel $length.
             $length = 6;
             // masukan empty string kedalam variabel $random.
@@ -100,10 +100,36 @@ class CheckoutContoller extends Controller
             Notification::send($admin, new NewTransaction($invoice));
 
             // isi data response['snapToken] dengan variabel $snapToken.
-            return $this->response['snapToken'] = $snapToken;
+
+            return [
+                'snapToken' => $snapToken,
+                'transactionId' => $invoice->id,
+            ];
+
+
+            //return $this->response['snapToken'] = $snapToken;
         });
 
         // passing variabel $snapToken kedalam view.
-        return view('landing.cart.checkout', compact('snapToken'));
+        $snapToken = $result['snapToken'];
+        $transactionId = $result['transactionId'];
+        return view('landing.cart.checkout', compact('snapToken','transactionId'));
+    }
+
+    public function success(Request $request){
+        // Ambil ID transaksi dari request (sesuaikan sesuai dengan parameter yang Anda kirim dari frontend)
+        $transactionId = $request->get('transaction_id');
+
+        // Cari transaksi berdasarkan ID atau parameter lain yang Anda gunakan
+        $transaction = Transaction::where('id', $transactionId)->first();
+        //dd($transaction,$transactionId);
+
+        if ($transaction) {
+            // Update status transaksi menjadi "success"
+            $transaction->status = "success";
+            $transaction->save();
+        }
+        // Redirect atau tampilkan halaman sukses
+        return redirect()->route('home')->with('success', 'Transaksi berhasil diproses.');
     }
 }

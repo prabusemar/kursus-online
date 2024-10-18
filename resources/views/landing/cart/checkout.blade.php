@@ -35,8 +35,14 @@
         payButton.addEventListener('click', function() {
             window.snap.pay('{{ $snapToken }}', {
                 // Optional
-                onSuccess: function() {
-                    window.location.href = "{{ route('home') }}";
+                onSuccess: function(result) {
+                    // Ambil transaction_id dari hasil Midtrans
+                    let transactionId = {{$transactionId}};
+
+                    // Redirect ke route checkout.success dengan parameter transaction_id
+                    window.location.href = "{{ route('checkout.success') }}?transaction_id=" + transactionId;
+
+                    //window.location.href = "{{ route('home') }}";
                 },
                 // Optional
                 onPending: function() {

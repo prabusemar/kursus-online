@@ -63,6 +63,7 @@ Route::controller(CartController::class)->middleware('auth')->as('cart.')->group
 });
 // checkout route
 Route::get('/checkout', [CheckoutContoller::class, 'store'])->name('checkout.store');
+Route::get('/checkout/success', [CheckoutContoller::class, 'success'])->name('checkout.success');
 
 // admin route
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function () {
