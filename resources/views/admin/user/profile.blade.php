@@ -62,11 +62,11 @@
                                         disabled>
                                 </div>
                                 <x-input title="Github" type="text" name="github" :value="$user->github"
-                                    placeholder="your github" />
+                                    placeholder="Your github" />
                                 <x-input title="Instagram" type="text" name="instagram" :value="$user->instagram"
-                                    placeholder="your instagram" />
-                                <x-textarea title="About Me" name="about" placeholder="Cuma Hooman yang suka Laravel"
-                                    value="">
+                                    placeholder="Your instagram" />
+                                <x-textarea title="About Me" name="about"
+                                    placeholder="Saya adalah entitas manusia yang menyukai coding" value="">
                                     {{ $user->about }}</x-textarea>
                                 <div class="form-group">
                                     <button type="submit" class="btn btn-success">

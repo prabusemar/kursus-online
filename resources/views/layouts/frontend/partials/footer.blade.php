@@ -15,8 +15,10 @@
                     <a href="#" class="block mt-2 text-sm text-[#CCC5B9] hover:underline hover:text-[#EB5E28]">
                         Tentang Kami
                     </a>
-                    <a href="#" class="block mt-2 text-sm text-[#CCC5B9] hover:underline hover:text-[#EB5E28]">FAQ</a>
-                    <a href="#" class="block mt-2 text-sm text-[#CCC5B9] hover:underline hover:text-[#EB5E28]">Tim Kami</a>
+                    <a href="#"
+                        class="block mt-2 text-sm text-[#CCC5B9] hover:underline hover:text-[#EB5E28]">FAQ</a>
+                    <a href="#" class="block mt-2 text-sm text-[#CCC5B9] hover:underline hover:text-[#EB5E28]">Tim
+                        Kami</a>
                 </div>
             </div>
             <div>
@@ -42,7 +44,8 @@
         <hr class="h-px my-6 bg-[#1a1816] border-none">
         <div>
             <p class="text-center text-[#CCC5B9]">
-                Created by Pribadi Ramadhan. © SmartLearn {{ date('Y') }}
+                <strong>&copy; {{ date('Y') }} SmartLearn. Created by Pribadi Ramadhan. All rights
+                    reserved.</strong>
             </p>
         </div>
     </div>

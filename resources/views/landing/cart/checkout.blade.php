@@ -1,16 +1,15 @@
 @extends('layouts.frontend.app', ['title' => 'Checkout'])
 
 @section('content')
-    <div class="w-full p-6 md:p-12 bg-slate-700 h-full">
+    <div class="w-full p-6 md:p-12 bg-[#252422] h-full">
         <div class="container mx-auto px-4">
             <div class="flex flex-col items-center justify-center gap-y-4 md:gap-y-8 text-center">
                 <img src="{{ asset('pay.svg') }}" class="w-1/2 md:w-1/3 object-cover object-center">
-                <h1 class="text-gray-100 font-semibold text-lg md:text-2xl mx-0 md:mx-80">
-                    Pesanan anda telah kami konfirmasi, Silahkan lanjutkan dengan melakukan
-                    pembayaran
+                <h1 class="text-[#FFFCF2] font-semibold text-lg md:text-2xl mx-0 md:mx-80">
+                    Pesanan anda telah kami konfirmasi, Silahkan lanjutkan dengan melakukan pembayaran
                 </h1>
                 <button
-                    class="px-4 py-2 rounded-lg bg-red-800 text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border"
+                    class="px-4 py-2 rounded-lg bg-red-800 text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border border-[#BD562D]"
                     id="pay-button">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-wallet mr-1" width="24"
                         height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"

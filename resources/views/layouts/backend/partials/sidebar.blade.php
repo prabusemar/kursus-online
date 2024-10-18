@@ -1,14 +1,15 @@
 <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <a href="/" class="brand-link">
-        <div class="text-center">
-            <span class="brand-text font-weight-bold">LaraDev</span>
-        </div>
+        <img src="{{ asset('PPLG.png') }}" alt="SmartLearn Logo" class="brand-image img-circle elevation-3"
+            style="opacity: .8">
+        <span class="brand-text font-weight-bolder">SmartLearn</span>
     </a>
 
     <div class="sidebar">
         <!-- Sidebar Menu -->
         <nav class="mt-2">
-            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+            <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu"
+                data-accordion="false">
                 @role('admin')
                     <li class="nav-header">DASHBOARD</li>
                     <li class="nav-item">
@@ -67,8 +68,7 @@
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         class="icon icon-tabler icon-tabler-corner-down-right-double nav-icon"
                                         width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25"
-                                        stroke="currentColor" fill="none" stroke-linecap="round"
-                                        stroke-linejoin="round">
+                                        stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M4 5v6a3 3 0 0 0 3 3h7"></path>
                                         <path d="M10 10l4 4l-4 4m5 -8l4 4l-4 4"></path>
@@ -360,3 +360,61 @@
         </nav>
     </div>
 </aside>
+<!-- Internal CSS -->
+<style>
+    .main-sidebar {
+        background-color: #252422;
+    }
+
+    .brand-text {
+        color: #FFFCF2;
+    }
+
+    .user-name {
+        color: #FFFCF2;
+    }
+
+    .search-input {
+        background-color: #403d39;
+        color: #FFFCF2;
+    }
+
+    .search-btn {
+        background-color: #EB5E28;
+        color: #FFFCF2;
+    }
+
+    .nav-sidebar .nav-link {
+        color: #FFFCF2;
+    }
+
+    .nav-sidebar .nav-link:hover {
+        color: #EB5E28;
+    }
+
+    .icon-course {
+        color: #EB5E28;
+    }
+
+    .icon-transaction {
+        color: #BD562D;
+    }
+
+    .nav-icon {
+        color: #FFFCF2;
+    }
+
+    .sidebar-dark-primary .nav-sidebar>.nav-item>.nav-link.active {
+        background-color: #BD562D;
+        color: #FFFCF2;
+    }
+
+    .nav-link.active .nav-icon {
+        color: #000 !important;
+        /* Ubah icon menjadi hitam */
+    }
+
+    .nav-link .nav-icon {
+        color: #FFFCF2 !important;
+    }
+</style>

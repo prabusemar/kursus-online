@@ -18,9 +18,14 @@
             <div class="w-60 bg-[#252422] h-1 mt-2"></div>
         </div>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 container mx-auto my-5 items-start">
-            @foreach ($courses as $course)
+            @forelse ($courses as $course)
                 <x-landing.course-item :course="$course" />
-            @endforeach
+            @empty
+                <div class="col-span-full text-center">
+                    <img src="{{ asset('no-course.svg') }}" alt="No Course Available" class="w-1/2 mx-auto">
+                    <p class="text-xl font-semibold text-[#252422] mt-4">Belum ada kursus</p>
+                </div>
+            @endforelse
         </div>
         <div class="flex justify-center text-center mt-14">
             <a href="{{ route('course.index') }}"

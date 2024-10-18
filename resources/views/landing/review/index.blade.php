@@ -22,7 +22,7 @@
     <div class="w-full bg-[#ccc5b9] p-3 border border-dashed border-[#0e0d0c]">
         <div class="container mx-auto">
             <div class="flex flex-row overflow-x-auto md:grid md:grid-cols-3 gap-4 items-start">
-                @foreach ($reviews as $review)
+                @forelse ($reviews as $review)
                     <div class="min-w-full bg-[#333333] rounded-lg border border-[#4A90E2]">
                         <div class="flex justify-between p-4">
                             <div class="flex space-x-4">
@@ -78,7 +78,12 @@
                             </a>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-span-full text-center">
+                        <img src="{{ asset('review.svg') }}" alt="No Reviews Available" class="w-1/2 mx-auto">
+                        <p class="text-xl font-semibold text-[#252422] mt-4">Belum ada review</p>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>

@@ -22,7 +22,7 @@
     <div class="w-full bg-[#ccc5b9] p-3 border border-dashed border-[#403d39]">
         <div class="container mx-auto">
             <div class="flex flex-row overflow-x-auto md:grid md:grid-cols-3 gap-4 items-start">
-                @foreach ($showcases as $showcase)
+                @forelse ($showcases as $showcase)
                     <div class="min-w-full bg-[#333333] rounded-lg border border-[#4A90E2]">
                         <div>
                             <img src="{{ $showcase->cover }}" class="rounded-t-lg" />
@@ -77,7 +77,12 @@
                             </div>
                         </div>
                     </div>
-                @endforeach
+                @empty
+                    <div class="col-span-full text-center">
+                        <img src="{{ asset('showcase.svg') }}" alt="No Showcases Available" class="w-1/2 mx-auto">
+                        <p class="text-xl font-semibold text-[#252422] mt-4">Belum ada showcase</p>
+                    </div>
+                @endforelse
             </div>
         </div>
     </div>
