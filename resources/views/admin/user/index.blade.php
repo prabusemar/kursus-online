@@ -30,16 +30,19 @@
                                 </td>
                                 <td>
                                     <x-button-modal :id="$user->id" />
+                                    <!-- Modal for updating user roles -->
                                     <x-modal :id="$user->id" :url="route('admin.user.update', $user->id)" title="{{ $user->name }}"
                                         titleBtn="Update User">
                                         <x-select title="Role" name="roles[]">
                                             @foreach ($roles as $role)
-                                                <option value="{{ $role->id }}" @selected($user->roles()->find($role->id))>
+                                                <option value="{{ $role->name }}" @selected($user->roles->contains('name', $role->name))>
                                                     {{ $role->name }}
                                                 </option>
                                             @endforeach
                                         </x-select>
+
                                     </x-modal>
+
                                     <x-button-delete :id="$user->id" :url="route('admin.user.destroy', $user->id)" />
                                 </td>
                             </tr>

@@ -47,12 +47,19 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        // kita update data user role sesuai request yang diberikan.
-        $user->syncRoles($request->roles);
+        // Validasi role untuk memastikan bahwa nama role disertakan dalam request
+        $validated = $request->validate([
+            'roles' => 'required|array', // Pastikan roles adalah array
+            'roles.*' => 'exists:roles,name', // Pastikan setiap role yang dipilih ada di database berdasarkan nama role
+        ]);
 
-        // kembali kehalaman sebelumnya dengan membawa toastr.
+        // Sinkronisasi role user berdasarkan nama role yang diterima dari form
+        $user->syncRoles($validated['roles']);
+
+        // Kirimkan pesan sukses dan kembalikan ke halaman sebelumnya
         return back()->with('toast_success', 'User Role Updated');
     }
+
 
     /**
      * Remove the specified resource from storage.
@@ -90,9 +97,9 @@ class UserController extends Controller
         ]);
 
         // cek apakah user mengirimkan request file avatar.
-        if($request->file('avatar')){
+        if ($request->file('avatar')) {
             // hapus avatar user sebelumnya.
-            Storage::disk('local')->delete('public/avatar/'.basename($user->avatar));
+            Storage::disk('local')->delete('public/avatar/' . basename($user->avatar));
             // tampung request file avatar kedalam variabel $avatar.
             $avatar = $request->file('avatar');
             // request yang telah kita tampung kedalam variabel kita masukan kedalam folder public/avatar.
@@ -115,10 +122,10 @@ class UserController extends Controller
         ]);
 
         // kita lakukan pengecekan apakah password yang lama sesuai dengan password yang kita masukan.
-        if(!(Hash::check($request->get('current_password'), $user->password))){
+        if (!(Hash::check($request->get('current_password'), $user->password))) {
             // kembali kehalaman sebelumnya dengan sebuah toastr.
             return back()->with('toast_error', 'Your Old Password Wrong');
-        }else{
+        } else {
             // update data password user bedasarkan id.
             $user->update([
                 'password' => Hash::make($request->get('password')),
