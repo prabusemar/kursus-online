@@ -10,7 +10,7 @@ class TransactionDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'transaction_id', 'course_id', 'price'
+        'transaction_id', 'course_id', 'price', 'course_name'
     ];
 
     public function transaction()

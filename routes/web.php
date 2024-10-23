@@ -26,6 +26,7 @@ use App\Http\Controllers\Landing\CategoryController as LandingCategoryController
 use App\Http\Controllers\Landing\ShowcaseController as LandingShowcaseController;
 use App\Http\Controllers\Member\DashboardController as MemberDashboardController;
 use App\Http\Controllers\Member\TransactionController as MemberTransactionController;
+use App\Http\Controllers\Member\TransactionAuthor as AuthorTransactionController;
 
 /*
 |--------------------------------------------------------------------------
@@ -128,6 +129,8 @@ Route::group(['as' => 'member.', 'prefix' => 'account', 'middleware' => ['auth',
     Route::post('/review/{course}', [MemberReviewController::class, 'store'])->name('review');
     // member transaction route
     Route::resource('/transaction', MemberTransactionController::class)->only('index', 'show');
+    Route::get('/income', AuthorTransactionController::class)->name('IncomeAuthor');
+    //Route::get('/transaction/author', MemberTransactionController::class,'index_author')->name('index_author');
     // member profile route
     Route::controller(MemberProfileController::class)->as('profile.')->group(function () {
         Route::get('/profile', 'index')->name('index');

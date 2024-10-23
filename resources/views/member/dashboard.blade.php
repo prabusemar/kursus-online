@@ -16,7 +16,7 @@
                     <h3>
                         {{ $course }}
                     </h3>
-                    <p>Course</p>
+                    <p>Enrolled Course</p>
                 </div>
                 <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-laptop" width="48"
@@ -29,6 +29,27 @@
                 </div>
             </div>
         </div>
+        @role("author")
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-lightblue">
+                <div class="inner">
+                    <h3>
+                        {{ $created_course }}
+                    </h3>
+                    <p>Course Created</p>
+                </div>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-device-laptop" width="48"
+                        height="48" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <line x1="3" y1="19" x2="21" y2="19"></line>
+                        <rect x="5" y="6" width="14" height="10" rx="1"></rect>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        @endrole
         <div class="col-lg-3 col-6">
             <div class="small-box bg-maroon">
                 <div class="inner">
@@ -91,5 +112,27 @@
                 </div>
             </div>
         </div>
+        @role("author")
+        <div class="col-lg-3 col-6">
+            <div class="small-box bg-teal">
+                <div class="inner">
+                    <h3>
+                        <sup>Rp</sup> {{ moneyFormat($nett_profit) }}
+                    </h3>
+                    <p>Nett profit</p>
+                </div>
+                <div class="icon">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt" width="48"
+                        height="48" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                        <path
+                            d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2m4 -14h6m-6 4h6m-2 4h2">
+                        </path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+        @endrole
     </div>
 @endsection

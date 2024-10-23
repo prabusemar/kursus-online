@@ -17,7 +17,7 @@ class Category extends Model
     protected function image(): Attribute
     {
         return Attribute::make(
-            get: fn($image) => asset('storage/categories/' . $image),
+            get: fn($image) => asset('public/storage/categories/' . $image),
         );
     }
 

@@ -127,7 +127,7 @@
                             </p>
                         </a>
                     </li>
-                    <li class="nav-header">LEARN</li>
+                    {{-- <li class="nav-header">LEARN</li>
                     <li class="nav-item">
                         <a href="{{ route('admin.mycourse') }}" class="nav-link {{ active('member.mycourse*') }} ">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-devices nav-icon"
@@ -143,7 +143,7 @@
                                 My Course
                             </p>
                         </a>
-                    </li>
+                    </li> --}}
                     <li class="nav-header">Transaction</li>
                     <li class="nav-item">
                         <a href="{{ route('admin.transaction.index') }}"
@@ -300,6 +300,7 @@
                             </p>
                         </a>
                     </li>
+
                     <li class="nav-header">TRANSACTION</li>
                     <li class="nav-item">
                         <a href="{{ route('member.transaction.index') }}"
@@ -317,6 +318,24 @@
                             </p>
                         </a>
                     </li>
+                    @role("author")
+                    <li class="nav-item">
+                        <a href="{{ route('member.IncomeAuthor') }}"
+                            class="nav-link {{ active('member.IncomeAuthor*') }}">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt nav-icon"
+                                width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25"
+                                stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                <path
+                                    d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16l-3 -2l-2 2l-2 -2l-2 2l-2 -2l-3 2m4 -14h6m-6 4h6m-2 4h2">
+                                </path>
+                            </svg>
+                            <p>
+                                Income
+                            </p>
+                        </a>
+                    </li>
+                    @endrole
                     <li class="nav-header">CONFIGURATION</li>
                     <li class="nav-item">
                         <a href="{{ route('member.profile.index') }}"

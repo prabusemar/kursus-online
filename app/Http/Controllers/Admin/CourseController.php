@@ -7,6 +7,8 @@ use App\Models\Category;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CourseRequest;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Showcase;
+use App\Models\Review;
 
 class CourseController extends Controller
 {
@@ -135,8 +137,17 @@ class CourseController extends Controller
     {
         // hapus image course berdasarkan id
         Storage::disk('local')->delete('public/course/'.basename($course->image));
-
+        $showcase = Showcase::where("course_id",$course->id)->get();
+        $review = Review::where("course_id",$course->id)->get();
         // hapus data course bedasarkan id
+
+        $showcase->each(function($item) {
+            $item->delete();
+        });
+        $review->each(function($item) {
+            $item->delete();
+        });
+
         $course->delete();
 
         // kembali kehalaman sebelumnya dengan membawa toastr

@@ -21,7 +21,7 @@ class Course extends Model
     protected function image(): Attribute
     {
         return Attribute::make(
-            get: fn($image) => asset('storage/course/' . $image),
+            get: fn($image) => asset('public/storage/course/' . $image),
         );
     }
 

@@ -3,6 +3,10 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\User;
+use App\Models\Cart;
+use App\Models\Showcase;
+use App\Models\Review;
+use App\Models\Course;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 use App\Http\Controllers\Controller;
@@ -69,6 +73,14 @@ class UserController extends Controller
      */
     public function destroy(User $user)
     {
+        $course = Course::where("user_id",$user->id);
+        $course->each(function($item){
+            $item->delete();
+        });
+        $cart = Cart::where("user_id",$user->id);
+        $cart->each(function($item){
+            $item->delete();
+        });
         // hapus data user berdasarkan id.
         $user->delete();
 

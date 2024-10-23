@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>{{ $transactions->firstItem() + $i }}</td>
                                     <td>{{ $transaction->invoice }}</td>
-                                    <td>{{ $transaction->user->email }}</td>
+                                    <td>{{ $transaction->email }}</td>
                                     <td>
                                         <sup>Rp</sup> {{ moneyFormat($transaction->grand_total) }}
                                     </td>
