@@ -119,7 +119,11 @@
                     <h3>
                         <sup>Rp</sup> {{ moneyFormat($nett_profit) }}
                     </h3>
+<<<<<<< HEAD
                     <p>Net profit</p>
+=======
+                    <p>Nett profit</p>
+>>>>>>> 26b7fffa6e89a6c5231b73fe7f57be8531979f09
                 </div>
                 <div class="icon">
                     <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt" width="48"
