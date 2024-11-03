@@ -1,6 +1,6 @@
 @extends('layouts.backend.app', ['title' => 'Course'])
-
 @section('content')
+<div class="course-wrapper">
     <div class="row">
         @foreach ($courses as $course)
             <div class="col-lg-4 col-12">
@@ -27,8 +27,7 @@
                             <li class="list-group-item">
                                 <b>Episodes</b>
                                 <span class="float-right text-dark">
-                                    {{ $course->video }} <a href="">
-                                    </a>
+                                    {{ $course->video }} <a href=""></a>
                                 </span>
                             </li>
                         </ul>
@@ -58,4 +57,36 @@
     <div class="d-flex justify-content-end">
         {{ $courses->links() }}
     </div>
+</div>
+<style>
+/* Wrapper untuk mendorong footer ke bawah */
+.course-wrapper {
+    min-height: 800px; /* Tinggi minimum yang cukup besar */
+    padding: 40px 0; /* Tambah padding atas bawah */
+}
+
+.course-wrapper .row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.course-wrapper .col-lg-4 {
+    margin-bottom: 30px; /* Tambah margin bottom pada card */
+}
+
+.course-wrapper .card {
+    height: 100%;
+}
+
+/* Pagination spacing */
+.course-wrapper .d-flex.justify-content-end {
+    margin: 30px 0;
+}
+
+@media (max-width: 767.98px) {
+    .course-wrapper {
+        padding: 20px 0;
+    }
+}
+</style>
 @endsection

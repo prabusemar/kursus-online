@@ -3,7 +3,7 @@
 @section('content')
     @if ($courses->isEmpty())
         <div class="text-center p-5">
-            <img src="{{ asset('no-course.svg') }}" class="img-fluid mb-4" alt="No Courses" style="max-width: 200px;">
+            <img src="{{ asset('no-course.svg') }}" class="img-fluid mb-4" alt="No Courses" style="max-width: 375px;">
             <h3 class="text-muted">Belum ada kursus yang tersedia</h3>
         </div>
     @else
@@ -65,4 +65,57 @@
             {{ $courses->links() }}
         </div>
     @endif
+    <style>
+/* Wrapper untuk mendorong footer ke bawah */
+.content {
+    min-height: 800px; /* Tinggi minimum yang cukup besar */
+    padding: 40px 0; /* Tambah padding atas bawah */
+}
+
+/* Styling untuk row dengan cards */
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.col-lg-4 {
+    margin-bottom: 30px; /* Tambah margin bottom pada card */
+}
+
+.card {
+    height: 100%;
+}
+
+/* Pagination spacing */
+.d-flex.justify-content-end {
+    margin: 30px 0;
+}
+
+/* Styling untuk empty state */
+.text-center.p-5 {
+    min-height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-center.p-5 img {
+    margin-bottom: 2rem;
+}
+
+.text-center.p-5 h3 {
+    color: #6c757d;
+}
+
+@media (max-width: 767.98px) {
+    .content {
+        padding: 20px 0;
+    }
+    
+    .text-center.p-5 {
+        min-height: 600px;
+    }
+}
+</style>
 @endsection

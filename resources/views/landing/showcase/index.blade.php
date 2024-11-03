@@ -78,11 +78,11 @@
                         </div>
                     </div>
                 @empty
-                    <div class="col-span-full text-center">
-                        <img src="{{ asset('showcase.svg') }}" alt="No Showcases Available" class="w-1/2 mx-auto">
-                        <p class="text-xl font-semibold text-[#252422] mt-4">Belum ada showcase</p>
-                    </div>
-                @endforelse
+    <div class="col-span-full flex flex-col items-center justify-center text-center min-h-screen mx-auto">
+        <img src="{{ asset('showcase.svg') }}" alt="No Showcases Available" class="w-1/2 mx-auto">
+        <p class="text-xl font-semibold text-[#252422] mt-4">Belum ada showcase</p>
+    </div>
+@endforelse
             </div>
         </div>
     </div>

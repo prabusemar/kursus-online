@@ -218,6 +218,35 @@
             </div>
         </div>
     </div>
+    
+    <style>
+/* Wrapper untuk sedikit mendorong footer ke bawah */
+.content {
+    min-height: 650px; /* Lebih kecil dari halaman sebelumnya */
+    padding: 20px 0; /* Padding lebih kecil */
+}
+
+/* Spacing untuk alert welcome */
+.alert {
+    margin-bottom: 1.5rem;
+}
+
+/* Spacing untuk baris cards */
+.row {
+    margin-bottom: 20px;
+}
+
+/* Spacing untuk chart card */
+.card-maroon {
+    margin-bottom: 30px;
+}
+
+@media (max-width: 767.98px) {
+    .content {
+        padding: 15px 0;
+    }
+}
+</style>
 @endsection
 
 @push('js')

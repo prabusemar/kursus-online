@@ -8,7 +8,7 @@
                     SmartLearn
                 </h1>
                 <p class="text-sm md:text-lg text-center md:text-start text-[#CCC5B9]">
-                    SmartLearn adalah platform pembelajaran online yang menyediakan kursus coding terlengkap dengan materi yang mudah dipahami dan studi kasus menarik. Pelajari berbagai bahasa pemrograman populer dan framework modern seperti Laravel, Vue.js, React.js, Tailwind CSS, JavaScript, TypeScript, React Native, Python, Java, PHP, Node.js, dan Django.
+                    SmartLearn adalah platform pembelajaran online yang menyediakan kursus coding lengkap dengan materi mudah dipahami. Pelajari bahasa pemrograman dan framework seperti Laravel, Vue.js, React.js, Tailwind CSS, JavaScript, TypeScript, React Native, Python, Java, PHP dan Node.js
                 </p>
                 <div class="flex flex-row gap-4 items-center justify-center md:justify-start">
                     <a href="{{ route('course.index') }}"

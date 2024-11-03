@@ -6,21 +6,32 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+
 
 class TransactionController extends Controller
 {
     public function index(Request $request)
     {
+        $user = $request->user();
         /*
             tampung semua data transaction yang dimiliki oleh user yang sedang login kedalam variabel $transactions, kemudian kita memanggil relasi menggunakan with, selanjutnya kita pecah data transaction yang kita tampilkan hanya 10 per halaman dengan urutan terbaru.
         */
-        $transactions = Transaction::with('details')
-            ->where('user_id', $request->user()->id)
-            ->latest()
-            ->paginate(10);
+
+            $transactions = Transaction::with('details')
+                ->where('user_id', $request->user()->id)
+                ->latest()
+                ->paginate(10);
+
+            $title = "MY TRANSACTION";
+
+            return view('member.transaction.index', compact('transactions','title'));
+
+
+
+        //dd($user->hasRole("author"));
 
         // passing variabel $transactions kedalam view.
-        return view('member.transaction.index', compact('transactions'));
     }
 
     public function show(Transaction $transaction)

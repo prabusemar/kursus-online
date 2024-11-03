@@ -19,7 +19,7 @@ class Showcase extends Model
     protected function cover(): Attribute
     {
         return Attribute::make(
-            get: fn($cover) => asset('storage/showcases/' . $cover),
+            get: fn($cover) => asset('public/storage/showcases/' . $cover),
         );
     }
 

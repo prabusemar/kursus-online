@@ -15,8 +15,8 @@ return new class extends Migration
     {
         Schema::create('reviews', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('course_id')->constrained();
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('course_id')->constrained()->onDelete('cascade');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->integer('rating');
             $table->text('review');
             $table->timestamps();
@@ -30,6 +30,10 @@ return new class extends Migration
      */
     public function down()
     {
+        Schema::table('reviews', function (Blueprint $table) {
+            $table->dropForeign(['course_id']);
+            $table->dropForeign(['user_id']);
+        });
         Schema::dropIfExists('reviews');
     }
 };

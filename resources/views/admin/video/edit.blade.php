@@ -35,4 +35,11 @@
             </form>
         </div>
     </div>
+    <style>
+    /* Wrapper untuk sedikit mendorong footer ke bawah */
+    .content {
+        min-height: 650px;
+        padding: 20px 0;
+    }
+    </style>
 @endsection

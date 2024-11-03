@@ -33,6 +33,8 @@ class CourseController extends Controller
             });
         }])->where('user_id', $user->id)->latest()->paginate(12);
 
+        //dd($courses);
+
         // passing variabel $courses kedalam view.
         return view('member.course.index', compact('courses'));
     }

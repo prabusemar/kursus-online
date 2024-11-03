@@ -10,7 +10,7 @@
             <x-card title="LIST REVIEW">
                 @if ($reviews->isEmpty())
                     <div class="text-center p-4">
-                        <img src="{{ asset('review.svg') }}" class="img-fluid mb-3" alt="No Reviews">
+                        <img src="{{ asset('review.svg') }}" class="img-fluid mb-3" width="375px" alt="No Reviews">
                         <h3 class="profile-username text-center">Belum ada review</h3>
                         <p class="text-center text-secondary">Belum ada review yang tersedia.</p>
                     </div>
@@ -46,4 +46,11 @@
             @endif
         </div>
     </div>
+    <style>
+    /* Wrapper untuk sedikit mendorong footer ke bawah */
+    .content {
+        min-height: 650px;
+        padding: 20px 0;
+    }
+    </style>
 @endsection

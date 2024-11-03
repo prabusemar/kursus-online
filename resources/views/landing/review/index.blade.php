@@ -53,7 +53,7 @@
                             </div>
                         </div>
                         <div class="p-4 space-y-2 text-sm text-[#CCC5B9] border-t border-dashed border-[#403d39]">
-                            <p class="text-justify">
+                            <p class="text-left">
                                 {{ $review->review }}
                             </p>
                         </div>
@@ -79,7 +79,7 @@
                         </div>
                     </div>
                 @empty
-                    <div class="col-span-full text-center">
+                    <div class="col-span-full flex flex-col items-center justify-center text-center min-h-screen mx-auto">
                         <img src="{{ asset('review.svg') }}" alt="No Reviews Available" class="w-1/2 mx-auto">
                         <p class="text-xl font-semibold text-[#252422] mt-4">Belum ada review</p>
                     </div>

@@ -9,7 +9,7 @@
             <x-card title="LIST TRANSACTION">
                 @if ($transactions->isEmpty())
                     <div class="text-center p-4">
-                        <img src="{{ asset('not-balance.svg') }}" class="img-fluid mb-3" alt="No Transactions">
+                        <img src="{{ asset('not-balance.svg') }}" class="img-fluid mb-3" width="375px" alt="No Transactions">
                         <h3 class="profile-username text-center">Belum ada transaksi</h3>
                         <p class="text-center text-secondary">Tidak ada transaksi yang tersedia saat ini.</p>
                     </div>
@@ -31,7 +31,7 @@
                                 <tr>
                                     <td>{{ $transactions->firstItem() + $i }}</td>
                                     <td>{{ $transaction->invoice }}</td>
-                                    <td>{{ $transaction->user->email }}</td>
+                                    <td>{{ $transaction->email }}</td>
                                     <td>
                                         <sup>Rp</sup> {{ moneyFormat($transaction->grand_total) }}
                                     </td>
@@ -63,4 +63,11 @@
             @endif
         </div>
     </div>
+    <style>
+    /* Wrapper untuk sedikit mendorong footer ke bawah */
+    .content {
+        min-height: 650px;
+        padding: 20px 0;
+    }
+    </style>
 @endsection

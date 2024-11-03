@@ -11,7 +11,7 @@ class Transaction extends Model
     use HasFactory, HasScope;
 
     protected $fillable = [
-        'user_id', 'invoice', 'name', 'status', 'grand_total', 'snap_token'
+        'user_id', 'invoice', 'name', 'status', 'grand_total', 'snap_token', 'email'
     ];
 
     public function details()

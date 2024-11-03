@@ -1,20 +1,20 @@
 @extends('layouts.frontend.app', ['title' => 'Homepage'])
 
 @section('content')
-    <div class="w-full bg-[#252422] p-5 md:p-20">
+    <div class="w-full bg-[#252422] p-8 md:p-16 lg:p-24">
         <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-4">
-                <div class="col-span-12 md:col-span-7">
-                    <div class="aspect-w-16 aspect-h-8 md:aspect-w-12 md:aspect-h-8 border border-[#252422] rounded-lg">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-4">
+                <div class="col-span-12 lg:col-span-7">
+                    <div class="aspect-w-16 aspect-h-8 lg:aspect-w-12 lg:aspect-h-8 border border-[#252422] rounded-lg">
                         <iframe src="https://www.youtube.com/embed/{{ $video->video_code }}" frameborder="0"
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowfullscreen class="rounded-lg"></iframe>
                     </div>
                 </div>
-                <div class="col-span-12 md:col-span-5">
-                    <div class="p-0 md:p-4">
+                <div class="col-span-12 lg:col-span-5">
+                    <div class="p-0 lg:p-4">
                         <h1 class="text-[#fffcf2] text-base font-semibold">{{ $course->name }}</h1>
-                        <p class="text-sm text-[#ccc5b9] mb-2 text-justify mt-1">
+                        <p class="text-sm text-[#ccc5b9] mb-2 text-left mt-1">
                             {{ $course->description }}
                         </p>
                         <div class="flex flex-row items-center justify-end gap-2 pb-5 mt-5">
@@ -35,7 +35,7 @@
                                 {{ round($avgRating, 1) }} ( {{ $course->reviews->count() }} Rating )
                             </div>
                         </div>
-                        <div class="h-52 md:h-80 overflow-y-auto">
+                        <div class="h-52 lg:h-80 overflow-y-auto">
                             @foreach ($videos as $video)
                                 <div class="p-4 text-[#fffcf2] {{ videoActive($video->episode) ? 'bg-[#252422]' : '' }}">
                                     <div class="flex justify-between items-center">
@@ -51,11 +51,11 @@
                                                     <path d="M7 4v16l13 -8z"></path>
                                                 </svg>
                                             @endif
-                                            <p class="text-xs md:text-sm ml-2 hover:text-[#eb5e28]">
+                                            <p class="text-xs lg:text-sm ml-2 hover:text-[#eb5e28]">
                                                 {{ $video->episode }}. {{ $video->name }}
                                             </p>
                                         </a>
-                                        <div class="text-xs md:text-sm">
+                                        <div class="text-xs lg:text-sm">
                                             @if ($video->intro == 0)
                                                 @if ($alreadyBought)
                                                     <svg xmlns="http://www.w3.org/2000/svg"
@@ -170,20 +170,26 @@
             </div>
         </div>
     </div>
-    <div id="review" class="w-full bg-[#ccc5b9] border-t border-b p-5 md:p-20 border-dashed border-[#403d39]">
-        <div class="container mx-auto">
-            <div class="p-4">
-                <div class="flex flex-col gap-2 text-center items-center mb-10">
-                    <h1 class="text-2xl text-[#252422] font-semibold">Review</h1>
-                    <p class="text-sm text-[#252422] lg:mx-96">
-                        Kumpulan review dari para member yang telah membeli course ini
-                    </p>
-                    <div class="w-60 bg-[#403d39] h-1 mt-2"></div>
-                </div>
-                <div class="flex flex-row overflow-x-auto md:grid md:grid-cols-3 gap-4 items-start">
+    <div id="review" class="w-full bg-[#ccc5b9] border-t border-b p-5 lg:p-20 border-dashed border-[#403d39]">
+    <div class="container mx-auto">
+        <div class="p-4">
+            <div class="flex flex-col gap-2 text-center items-center mb-10">
+                <h1 class="text-2xl text-[#252422] font-semibold">Review</h1>
+                <p class="text-sm text-[#252422] lg:mx-96">
+                    Kumpulan review dari para member yang telah membeli course ini
+                </p>
+                <div class="w-60 bg-[#403d39] h-1 mt-2"></div>
+            </div>
+            <div class="grid gap-4 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 items-start justify-center">
+                @if ($reviews->isEmpty())
+                    <div class="col-span-full flex flex-col items-center justify-center text-center min-h-screen mx-auto">
+                        <img src="{{ asset('review.svg') }}" alt="No Showcases Available" class="w-1/2 mx-auto">
+                        <p class="text-xl font-semibold text-[#252422] mt-4">Belum ada review</p>
+                    </div>
+                @else
                     @foreach ($reviews as $review)
-                        <div class="min-w-full bg-[#403d39] rounded-lg border border-[#252422]">
-                            <div class="flex justify-between p-4">
+                        <div class="bg-[#403d39] rounded-lg border border-[#252422] p-4 flex flex-col">
+                            <div class="flex justify-between w-full mb-2">
                                 <div class="flex space-x-4">
                                     <div>
                                         <img src="{{ $review->user->avatar }}" alt=""
@@ -211,13 +217,15 @@
                                     </span>
                                 </div>
                             </div>
-                            <div class="p-4 space-y-2 text-sm text-[#ccc5b9] border-t border-dashed border-[#252422]">
+                            <div class="text-sm text-[#ccc5b9] border-t border-dashed border-[#252422] pt-2">
                                 <p class="text-justify">{{ $review->review }}</p>
                             </div>
                         </div>
                     @endforeach
-                </div>
+                @endif
             </div>
         </div>
     </div>
+</div>
+
 @endsection

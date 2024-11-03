@@ -3,8 +3,12 @@
 @section('content')
     <div class="w-full bg-[#252422] p-5 md:p-20">
         <div class="container mx-auto">
-            <div class="grid grid-cols-1 md:grid-cols-3 items-center gap-4 md:gap-20">
-                <div class="md:col-span-2">
+            <div class="grid grid-cols-1 md:grid-cols-3.5 items-center gap-4 md:gap-20">
+                <div
+                    class="flex text-center justify-center items-center row-start-1 md:row-auto mx-auto sm:mx-0 md:col-span-2">
+                    <img src="{{ $course->image }}" alt="{{ $course->title }}" class="w-3/4 md:w-full rounded-lg course-image" />
+                </div>
+                <div class="md:col-span-1.5">
                     <div class="flex flex-row gap-4 text-xs justify-center md:justify-start mt-4">
                         <div class="text-[#ccc5b9] flex items-center gap-2">
                             <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-list w-5 h-5"
@@ -51,60 +55,59 @@
                     <p class="text-sm text-center md:text-base md:text-justify text-[#ccc5b9]">{{ $course->description }}
                     </p>
                     <div class="mt-5">
-                        <h1 class="text-3xl md:text-6xl text-green-500 font-mono text-center md:text-start">
-                            <sup>Rp</sup>{{ moneyFormat(discount($course->price, $course->discount)) }}
-                        </h1>
-                        <div class="flex flex-row gap-4 items-center my-6 justify-center md:justify-start space-x-4">
-                            @if ($alreadyBought)
+                        @if (discount($course->price, $course->discount) == 0)
+                            <h1 class="text-3xl md:text-6xl text-green-500 font-mono text-center md:text-start">
+                                GRATIS!
+                            </h1>
+                            <div class="flex flex-row gap-4 items-center my-6 justify-center md:justify-start space-x-4">
                                 <div
                                     class="px-4 py-2 rounded-lg bg-[#BD562D] text-white flex items-center gap-2 text-sm border border-[#BD562D] cursor-not-allowed">
+                                    Silahkan menikmati video pembelajarannya.
+                                </div>
+                            </div>
+                        @else
+                            <h1 class="text-3xl md:text-6xl text-green-500 font-mono text-center md:text-start">
+                                <sup>Rp</sup>{{ moneyFormat(discount($course->price, $course->discount)) }}
+                            </h1>
+                            <div class="flex flex-row gap-4 items-center my-6 justify-center md:justify-start space-x-4">
+                                @if ($alreadyBought)
+                                    <div
+                                        class="px-4 py-2 rounded-lg bg-[#BD562D] text-white flex items-center gap-2 text-sm border border-[#BD562D] cursor-not-allowed">
+                                        Premium Akses
+                                    </div>
+                                @else
+                                    <form action="{{ route('cart.store', $course->id) }}" method="POST">
+                                        @csrf
+                                        <button type="submit"
+                                            class="mt-4 px-4 py-2 rounded-lg bg-[#166534] text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border border-[#166534]">
+                                            <svg xmlns="http://www.w3.org/2000/svg"
+                                                class="icon icon-tabler icon-tabler-basket w-5 h-5" width="24"
+                                                height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
+                                                fill="none" stroke-linecap="round" stroke-linejoin="round">
+                                                <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                                                <polyline points="7 10 12 4 17 10"></polyline>
+                                                <path d="M21 10l-2 8a2 2.5 0 0 1 -2 2h-10a2 2.5 0 0 1 -2 -2l-2 -8z"></path>
+                                                <circle cx="12" cy="15" r="2"></circle>
+                                            </svg>
+                                            Beli Sekarang
+                                        </button>
+                                    </form>
+                                @endif
+
+                                <button onclick="openModal()"
+                                    class="px-4 py-2 rounded-lg bg-[#991B1B] text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border border-[#991B1B]">
                                     <svg xmlns="http://www.w3.org/2000/svg"
-                                        class="icon icon-tabler icon-tabler-discount-check w-5 h-5" width="24"
+                                        class="icon icon-tabler icon-tabler-brand-youtube h-5 w-5" width="24"
                                         height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
                                         fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                        <path
-                                            d="M5 7.2a2.2 2.2 0 0 1 2.2 -2.2h1a2.2 2.2 0 0 0 1.55 -.64l.7 -.7a2.2 2.2 0 0 1 3.12 0l.7 .7c.412 .41 .97 .64 1.55 .64h1a2.2 2.2 0 0 1 2.2 2.2v1c0 .58 .23 1.138 .64 1.55l.7 .7a2.2 2.2 0 0 1 0 3.12l-.7 .7a2.2 2.2 0 0 0 -.64 1.55v1a2.2 2.2 0 0 1 -2.2 2.2h-1a2.2 2.2 0 0 0 -1.55 .64l-.7 .7a2.2 2.2 0 0 1 -3.12 0l-.7 -.7a2.2 2.2 0 0 0 -1.55 -.64h-1a2.2 2.2 0 0 1 -2.2 -2.2v-1a2.2 2.2 0 0 0 -.64 -1.55l-.7 -.7a2.2 2.2 0 0 1 0 -3.12l.7 -.7a2.2 2.2 0 0 0 .64 -1.55v-1">
-                                        </path>
-                                        <path d="M9 12l2 2l4 -4"></path>
+                                        <rect x="3" y="5" width="18" height="14" rx="4"></rect>
+                                        <path d="M10 9l5 3l-5 3z"></path>
                                     </svg>
-                                    Premium Akses
-                                </div>
-                            @else
-                                <form action="{{ route('cart.store', $course->id) }}" method="POST">
-                                    @csrf
-                                    <button type="submit"
-                                        class="mt-4 px-4 py-2 rounded-lg bg-[#166534] text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border border-[#166534]">
-                                        <svg xmlns="http://www.w3.org/2000/svg"
-                                            class="icon icon-tabler icon-tabler-basket w-5 h-5" width="24"
-                                            height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
-                                            fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                            <polyline points="7 10 12 4 17 10"></polyline>
-                                            <path d="M21 10l-2 8a2 2.5 0 0 1 -2 2h-10a2 2.5 0 0 1 -2 -2l-2 -8z"></path>
-                                            <circle cx="12" cy="15" r="2"></circle>
-                                        </svg>
-                                        Beli Sekarang
-                                    </button>
-                                </form>
-                            @endif
-
-                            <!-- Button to trigger modal -->
-                            <button onclick="openModal()"
-                                class="px-4 py-2 rounded-lg bg-[#991B1B] text-white hover:scale-110 hover:duration-200 flex items-center gap-2 text-sm border border-[#991B1B]">
-                                <svg xmlns="http://www.w3.org/2000/svg"
-                                    class="icon icon-tabler icon-tabler-brand-youtube h-5 w-5" width="24"
-                                    height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor"
-                                    fill="none" stroke-linecap="round" stroke-linejoin="round">
-                                    <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                                    <rect x="3" y="5" width="18" height="14" rx="4"></rect>
-                                    <path d="M10 9l5 3l-5 3z"></path>
-                                </svg>
-                                Lihat Demo
-                            </button>
-
-                            <!-- Modal -->
-                            <div class="hidden fixed inset-0 bg-transparent flex items-center justify-center z-50"
+                                    Lihat Demo
+                                </button>
+                                
+                                <div class="hidden fixed inset-0 bg-transparent flex items-center justify-center z-50"
                                 id="demoModal">
                                 <div class="bg-[#ccc5b9] p-4 rounded-lg max-w-4xl w-full mx-auto">
                                     <div class="flex justify-between items-center mb-4">
@@ -118,13 +121,11 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                            </div>
+                        @endif
                     </div>
                 </div>
-                <div
-                    class="flex text-center justify-center items-center row-start-1 md:row-auto mx-auto sm:mx-0 md:col-span-1">
-                    <img src={{ $course->image }} alt="{{ $course->title }}" class="w-1/2 md:w-3/4 rounded-lg" />
-                </div>
+                
             </div>
         </div>
     </div>
@@ -241,3 +242,12 @@
         iframe.src = currentSrc; // Mengembalikan src untuk menghentikan video
     }
 </script>
+
+<style>
+    @media (min-width: 768px) {
+        .course-image {
+            width: 100%; /* Memperbesar gambar pada tampilan desktop */
+            max-width: 700px; /* Batas maksimum untuk lebar gambar */
+        }
+    }
+</style>

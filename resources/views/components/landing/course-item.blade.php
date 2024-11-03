@@ -52,12 +52,18 @@
                 Discount {{ $course->discount }}%
             </span>
             <div class="flex flex-col">
-                <span class="line-through text-red-500 font-mono">
-                    <sup>Rp</sup>{{ moneyFormat($course->price) }}
-                </span>
-                <span class="text-green-500 font-mono">
-                    <sup>Rp</sup>{{ moneyFormat(discount($course->price, $course->discount)) }}
-                </span>
+                @if (discount($course->price, $course->discount) == 0)
+                    <span class="text-green-500 font-mono text-lg font-bold">
+                        GRATIS!
+                    </span>
+                @else
+                    <span class="line-through text-red-500 font-mono">
+                        <sup>Rp</sup>{{ moneyFormat($course->price) }}
+                    </span>
+                    <span class="text-green-500 font-mono">
+                        <sup>Rp</sup>{{ moneyFormat(discount($course->price, $course->discount)) }}
+                    </span>
+                @endif
             </div>
         </div>
     </div>

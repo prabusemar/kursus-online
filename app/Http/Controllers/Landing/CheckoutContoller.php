@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Landing;
 
 use Midtrans\Snap;
 use App\Models\Cart;
+use App\Models\Course;
 use App\Models\User;
 use App\Models\Transaction;
 use Illuminate\Support\Str;
@@ -46,6 +47,7 @@ class CheckoutContoller extends Controller
             $invoice = Transaction::create([
                 'invoice'           => $no_invoice,
                 'user_id'           => $request->user()->id,
+                'email'           => $request->user()->email,
                 'name'              => $request->name,
                 'grand_total'       => $request->grand_total,
                 'status'            => 'pending',
@@ -57,9 +59,11 @@ class CheckoutContoller extends Controller
             // lakukan perulangan data $carts yang kita ubah menjadi variabel $cart.
             foreach($carts->get() as $cart){
                 // masukan data baru transaction details dengan "transaction_id" sesuai dengan variabel $invoice.
+                $course = Course::where("id",$cart->course_id)->first();
                 $invoice->details()->create([
                     'course_id' => $cart->course_id,
-                    'price' => $cart->price
+                    'price' => $cart->price,
+                    'course_name' => $course ? $course->name : "Unknown Course",
                 ]);
             }
 
@@ -104,6 +108,7 @@ class CheckoutContoller extends Controller
             return [
                 'snapToken' => $snapToken,
                 'transactionId' => $invoice->id,
+                'email' => $invoice,
             ];
 
 
@@ -113,6 +118,10 @@ class CheckoutContoller extends Controller
         // passing variabel $snapToken kedalam view.
         $snapToken = $result['snapToken'];
         $transactionId = $result['transactionId'];
+        $email = $result['email'];
+        //dd($email);
+
+
         return view('landing.cart.checkout', compact('snapToken','transactionId'));
     }
 

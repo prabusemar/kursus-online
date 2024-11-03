@@ -8,6 +8,7 @@ use App\Models\Transaction;
 use Illuminate\Http\Request;
 use App\Models\TransactionDetail;
 use App\Http\Controllers\Controller;
+use App\Models\Course;
 
 class DashboardController extends Controller
 {
@@ -31,6 +32,8 @@ class DashboardController extends Controller
                     $query->where('user_id', $user->id)->where('status', 'success');
                 })->count();
 
+        $created_course = Course::where("user_id",$user->id)->count();
+
         // tampung jumlah data review user yang sedang login kedalam variabel $review.
         $review = Review::where('user_id', $user->id)->count();
 
@@ -41,7 +44,13 @@ class DashboardController extends Controller
         // tampung jumlah data showcase user yang sedang login kedalam variabel $showcase.
         $showcase = Showcase::where('user_id', $user->id)->count();
 
+        $total_price = Transaction::whereHas('details.course', function ($query) use ($user) {
+            $query->where('user_id', $user->id); // assuming 'author_id' is on the 'courses' table
+        })->sum('grand_total');
+
+        $nett_profit = $total_price - ($total_price * 0.15);
+
         // passing variabel $course, $review, $transaction, dan $showcase kedalam view.
-        return view('member.dashboard', compact('course', 'review', 'transaction', 'showcase'));
+        return view('member.dashboard', compact('course', 'review', 'transaction', 'showcase','nett_profit','created_course'));
     }
 }

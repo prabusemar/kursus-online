@@ -6,7 +6,7 @@
             <div class="col-12">
                 <div class="card card-dark card-outline shadow-none">
                     <div class="card-body box-profile text-center">
-                        <img src="{{ asset('showcase.svg') }}" class="img-fluid mb-3" alt="No Showcase">
+                        <img src="{{ asset('showcase.svg') }}" class="img-fluid mb-3" width="375px" alt="No Showcase">
                         <h3 class="profile-username text-center">Belum ada showcase</h3>
                     </div>
                 </div>
@@ -52,4 +52,11 @@
             @endforeach
         @endif
     </div>
+    <style>
+    /* Wrapper untuk sedikit mendorong footer ke bawah */
+    .content {
+        min-height: 650px;
+        padding: 20px 0;
+    }
+    </style>
 @endsection

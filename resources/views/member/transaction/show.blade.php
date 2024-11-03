@@ -21,13 +21,13 @@
                             <tr>
                                 <td width="30%">Nama Lengkap</td>
                                 <td>
-                                    {{ $transaction->user->name }}
+                                    {{ $transaction->name }}
                                 </td>
                             </tr>
                             <tr>
                                 <td width="30%">Email</td>
                                 <td>
-                                    {{ $transaction->user->email }}
+                                    {{ $transaction->email }}
                                 </td>
                             </tr>
                             <tr>
@@ -78,7 +78,7 @@
                             @foreach ($orders as $order)
                                 <tr>
                                     <td>
-                                        {{ $order->course->name }}
+                                        {{ $order->course_name }}
                                     </td>
                                     <td class="text-right">
                                         <sup>Rp</sup> {{ moneyFormat($order->price) }}
@@ -103,6 +103,7 @@
     <script type="text/javascript" src="https://app.sandbox.midtrans.com/snap/snap.js"
         data-client-key="{{ config('services.midtrans.serverKey') }}"></script>
     <script type="text/javascript">
+
         var payButton = document.getElementById('pay-button');
         payButton.addEventListener('click', function() {
             window.snap.pay('{{ $snapToken }}', {

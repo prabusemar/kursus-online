@@ -26,15 +26,15 @@
                     <h3 class="text-[#FFFCF2] uppercase">Media Sosial</h3>
                     <div class="flex flex-col items-start space-y-2 mt-2">
                         <a href="https://www.youtube.com" class="flex items-center text-[#CCC5B9] hover:text-[#EB5E28]">
-                            <i class="fab fa-facebook-f mr-1"></i>
+                            <i class="fab fa-youtube mr-3"></i>
                             Youtube
                         </a>
                         <a href="https://instagram.com" class="flex items-center text-[#CCC5B9] hover:text-[#EB5E28]">
-                            <i class="fab fa-instagram mr-1"></i>
+                            <i class="fab fa-instagram mr-3"></i>
                             Instagram
                         </a>
                         <a href="https://linkedin.com" class="flex items-center text-[#CCC5B9] hover:text-[#EB5E28]">
-                            <i class="fab fa-linkedin-in mr-1"></i>
+                            <i class="fab fa-linkedin-in mr-3"></i>
                             LinkedIn
                         </a>
                     </div>
